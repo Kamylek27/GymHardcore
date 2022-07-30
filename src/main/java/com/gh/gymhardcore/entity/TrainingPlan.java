@@ -1,5 +1,6 @@
 package com.gh.gymhardcore.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class TrainingPlan {
 
@@ -15,6 +17,7 @@ public class TrainingPlan {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany
+    @OneToMany(mappedBy = "trainingPlan")
     private List<Chest> chests;
+
 }
