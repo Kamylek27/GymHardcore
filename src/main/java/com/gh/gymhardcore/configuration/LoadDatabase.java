@@ -18,14 +18,11 @@ public class LoadDatabase {
     private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 
     @Bean
-    CommandLineRunner initDatabase(TrainingPlanRepository trainingPlanRepository, ChestRepository chestRepository) {
+    CommandLineRunner initDatabase(ChestRepository chestRepository) {
         return args -> {
-            Chest chest = new Chest(1L, BENCHPRESS, 100.0, 5, 10, null);
+            Chest chest = new Chest(1L, BENCHPRESS, 100.0, 5, 10);
             log.info("Preloading " + chestRepository.save(chest));
             List<Chest> chests = chestRepository.findAll();
-            TrainingPlan trainingPlan = new TrainingPlan();
-            trainingPlan.setChests(chests);
-            log.info("Preloading " + trainingPlanRepository.save(trainingPlan));
         };
     }
 
