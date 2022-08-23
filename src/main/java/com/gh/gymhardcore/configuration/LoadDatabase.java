@@ -2,7 +2,6 @@ package com.gh.gymhardcore.configuration;
 
 import com.gh.gymhardcore.entity.Chest;
 import com.gh.gymhardcore.repository.ChestRepository;
-import com.gh.gymhardcore.repository.TrainingPlanRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
