@@ -13,8 +13,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-public class Chest {
-
+public class Back {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

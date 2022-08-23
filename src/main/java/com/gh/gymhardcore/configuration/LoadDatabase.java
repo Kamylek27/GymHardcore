@@ -1,8 +1,6 @@
 package com.gh.gymhardcore.configuration;
 
 import com.gh.gymhardcore.entity.Chest;
-import com.gh.gymhardcore.entity.ChestExercise;
-import com.gh.gymhardcore.entity.TrainingPlan;
 import com.gh.gymhardcore.repository.ChestRepository;
 import com.gh.gymhardcore.repository.TrainingPlanRepository;
 import org.slf4j.Logger;
@@ -11,11 +9,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static com.gh.gymhardcore.entity.ChestExercise.BenchPress;
+import static com.gh.gymhardcore.enums.ChestExercise.BENCHPRESS;
 
 @Configuration
 public class LoadDatabase {
@@ -25,10 +21,12 @@ public class LoadDatabase {
     @Bean
     CommandLineRunner initDatabase(TrainingPlanRepository trainingPlanRepository, ChestRepository chestRepository) {
         return args -> {
-            Chest chest = new Chest(1L, BenchPress, 100.0, 5, 10, null);
+            Chest chest = new Chest(1L, BENCHPRESS, 100.0, 5, 10, null);
             log.info("Preloading " + chestRepository.save(chest));
             List<Chest> chests = chestRepository.findAll();
-            log.info("Preloading " + trainingPlanRepository.save(new TrainingPlan(1L, chests)));
+            TrainingPlan trainingPlan = new TrainingPlan();
+            trainingPlan.setChests(chests);
+            log.info("Preloading " + trainingPlanRepository.save(trainingPlan));
         };
     }
 
