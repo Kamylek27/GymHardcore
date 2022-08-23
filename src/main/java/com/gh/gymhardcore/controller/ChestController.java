@@ -1,11 +1,10 @@
 package com.gh.gymhardcore.controller;
 
+import com.gh.gymhardcore.dto.ChestDto;
 import com.gh.gymhardcore.entity.Chest;
 import com.gh.gymhardcore.service.ChestService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +19,14 @@ public class ChestController {
         return chestService.getAllChestExercise();
     }
 
+    @PostMapping("/create")
+    public void createChestExercise(@RequestBody ChestDto chestDto) {
+        chestService.createChestExercise(chestDto);
+    }
+
+    @PutMapping("/update")
+    public void updateChestExercise() {
+
+    }
 
 }

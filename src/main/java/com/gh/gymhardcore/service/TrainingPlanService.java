@@ -1,9 +1,6 @@
 package com.gh.gymhardcore.service;
 
-import com.gh.gymhardcore.entity.TrainingPlan;
 import com.gh.gymhardcore.repository.TrainingPlanRepository;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
