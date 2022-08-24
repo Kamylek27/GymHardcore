@@ -2,6 +2,7 @@ package com.gh.gymhardcore.controller;
 
 import com.gh.gymhardcore.dto.ChestDto;
 import com.gh.gymhardcore.entity.Chest;
+import com.gh.gymhardcore.repository.ChestRepository;
 import com.gh.gymhardcore.service.ChestService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -14,19 +15,13 @@ import java.util.List;
 public class ChestController {
     private ChestService chestService;
 
-    @GetMapping("all")
-    public List<Chest> getAllChest() {
-        return chestService.getAllChestExercise();
-    }
-
     @PostMapping("/create")
-    public void createChestExercise(@RequestBody ChestDto chestDto) {
-        chestService.createChestExercise(chestDto);
+    public Chest createChestExercise(@RequestBody Chest chest) {
+        return chestService.createChestExercise(chest);
     }
 
     @PutMapping("/update")
     public void updateChestExercise() {
-
     }
 
 }

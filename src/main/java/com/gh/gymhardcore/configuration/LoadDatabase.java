@@ -20,9 +20,7 @@ public class LoadDatabase {
     @Bean
     CommandLineRunner initDatabase(ChestRepository chestRepository) {
         return args -> {
-            Chest chest = new Chest(1L, BENCHPRESS, 100.0, 5, 10);
-            log.info("Preloading " + chestRepository.save(chest));
-            List<Chest> chests = chestRepository.findAll();
+            System.out.println("DUPA");
         };
     }
 

@@ -16,8 +16,8 @@ import java.util.Objects;
 public class Chest {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long chestId;
 
     @Enumerated(EnumType.STRING)
     private ChestExercise chestExercise;
@@ -27,5 +27,8 @@ public class Chest {
     private int sets;
 
     private int repeats;
+    @ManyToOne
+    @JoinColumn(name = "training_id")
+    private Training training;
 
 }
