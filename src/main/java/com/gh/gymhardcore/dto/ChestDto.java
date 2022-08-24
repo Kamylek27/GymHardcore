@@ -12,5 +12,6 @@ public class ChestDto {
     private double maxWeight;
     private int sets;
     private int repeats;
+    private Long trainingId;
 
 }
