@@ -20,5 +20,11 @@ public class TrainingController {
     }
 
 
+    @PostMapping("/create")
+    public Training createTraining(@RequestBody Training training) {
+        return trainingService.createTraining(training);
     }
+
+
+}
 

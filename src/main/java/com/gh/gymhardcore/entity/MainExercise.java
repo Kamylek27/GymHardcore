@@ -1,20 +1,19 @@
 package com.gh.gymhardcore.entity;
 
-import com.gh.gymhardcore.enums.ChestExercise;
 import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-@ToString
-public class DeadLift {
+@Data
+public class MainExercise {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long deadLiftId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long benchPressID;
+
+    private String name;
 
     private double oneRepMax;
 
