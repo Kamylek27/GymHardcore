@@ -1,23 +1,19 @@
 package com.gh.gymhardcore.controller;
 
-import com.gh.gymhardcore.dto.ChestDto;
-import com.gh.gymhardcore.entity.Chest;
-import com.gh.gymhardcore.repository.ChestRepository;
-import com.gh.gymhardcore.service.ChestService;
+import com.gh.gymhardcore.entity.BenchPress;
+import com.gh.gymhardcore.service.TrainingService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/chest")
 public class ChestController {
-    private ChestService chestService;
+    private TrainingService trainingService;
 
     @PostMapping("/create")
-    public Chest createChestExercise(@RequestBody Chest chest) {
-        return chestService.createChestExercise(chest);
+    public BenchPress createChestExercise(@RequestBody BenchPress benchPress) {
+        return trainingService.createBenchPressMax(benchPress);
     }
 
     @PutMapping("/update")

@@ -2,10 +2,8 @@ package com.gh.gymhardcore.entity;
 
 import com.gh.gymhardcore.enums.ChestExercise;
 import lombok.*;
-import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @NoArgsConstructor
@@ -13,22 +11,16 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-public class Back {
+public class DeadLift {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long backId;
+    private Long deadLiftId;
 
-    @Enumerated(EnumType.STRING)
-    private ChestExercise chestExercise;
+    private double oneRepMax;
 
-    private double maxWeight;
-
-    private int sets;
-
-    private int repeats;
+    private double tM;
 
     @ManyToOne
     @JoinColumn(name = "training_id")
     private Training training;
-
 }
