@@ -2,33 +2,23 @@ package com.gh.gymhardcore.entity;
 
 import com.gh.gymhardcore.enums.ChestExercise;
 import lombok.*;
-import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-@ToString
-public class Chest {
+@Data
+public class BenchPress {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long chestId;
+    private Long benchPressID;
 
-    @Enumerated(EnumType.STRING)
-    private ChestExercise chestExercise;
+    private double oneRepMax;
 
-    private double maxWeight;
+    private double tM;
 
-    private int sets;
-
-    private int repeats;
     @ManyToOne
     @JoinColumn(name = "training_id")
     private Training training;
-
 }
