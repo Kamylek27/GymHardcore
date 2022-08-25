@@ -21,8 +21,6 @@ public class Training {
     private LocalDate localDate;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "training", fetch = FetchType.LAZY)
-    private List<BenchPress> benchPresses;
+    private List<MainExercise> mainExercises;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "training", fetch = FetchType.LAZY)
-    private List<BenchPress> backs;
 }
