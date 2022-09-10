@@ -23,4 +23,7 @@ public class Training {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "training", fetch = FetchType.LAZY)
     private List<MainExercise> mainExercises;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "training", fetch = FetchType.LAZY)
+    private List<Exercise> exercises;
+
 }
