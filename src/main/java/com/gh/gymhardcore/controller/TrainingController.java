@@ -1,5 +1,6 @@
 package com.gh.gymhardcore.controller;
 
+import com.gh.gymhardcore.dto.TrainingDto;
 import com.gh.gymhardcore.entity.Training;
 import com.gh.gymhardcore.service.TrainingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,8 @@ public class TrainingController {
 
 
     @PostMapping("/create")
-    public Training createTraining(@RequestBody Training training) {
-        return trainingService.createTraining(training);
+    public Training createTraining(@RequestBody TrainingDto trainingDto) {
+        return trainingService.createTraining(trainingDto);
     }
 
 

@@ -1,11 +1,14 @@
 package com.gh.gymhardcore.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.gh.gymhardcore.enums.MainExercises;
+import com.gh.gymhardcore.enums.TypeTraining;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,13 +20,29 @@ public class Training {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long trainingId;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate localDate;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "training", fetch = FetchType.LAZY)
-    private List<MainExercise> mainExercises;
+    @Enumerated(EnumType.STRING)
+    private TypeTraining typeTraining;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "training", fetch = FetchType.LAZY)
-    private List<Exercise> exercises;
+    @Enumerated(EnumType.STRING)
+    private MainExercises mainExercises;
+
+    private double oneRm;
+
+    private double tM;
+
+    @ElementCollection
+    private List<Integer> percents;
+
+    @ElementCollection
+    private List<Double> weight;
+
+//    @ElementCollection
+//    private List<Double> sets;
+//
+//    @ElementCollection
+//    private List<Double> reps;
 
 }
