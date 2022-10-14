@@ -19,6 +19,4 @@ public class TrainingDto {
     private MainExercises mainExercises;
 
     private double oneRm;
-
-    private List<Integer> percents;
 }

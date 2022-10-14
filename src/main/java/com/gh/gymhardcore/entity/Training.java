@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -34,15 +33,6 @@ public class Training {
     private double tM;
 
     @ElementCollection
-    private List<Integer> percents;
-
-    @ElementCollection
     private List<Double> weight;
-
-//    @ElementCollection
-//    private List<Double> sets;
-//
-//    @ElementCollection
-//    private List<Double> reps;
 
 }
