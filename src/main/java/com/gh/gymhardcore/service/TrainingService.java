@@ -1,6 +1,7 @@
 package com.gh.gymhardcore.service;
 
-import com.gh.gymhardcore.dto.TrainingRequest;
+import com.gh.gymhardcore.dto.TrainingCreateRequest;
+import com.gh.gymhardcore.dto.TrainingUpdateRequest;
 import com.gh.gymhardcore.entity.Training;
 import com.gh.gymhardcore.repository.TrainingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,30 +25,30 @@ public class TrainingService {
     }
 
 
-    public Training createTraining(TrainingRequest trainingRequest) {
+    public Training createTraining(TrainingCreateRequest trainingCreateRequest) {
         Training training = new Training();
-        System.out.println(trainingRequest.getOneRm());
+        System.out.println(trainingCreateRequest.getOneRm());
 
-        training.setTypeTraining(trainingRequest.getTypeTraining());
-        training.setLocalDate(trainingRequest.getLocalDate());
-        training.setOneRm(trainingRequest.getOneRm());
-        training.setMainExercises(trainingRequest.getMainExercises());
-        training.setTM(countingTM(trainingRequest.getOneRm()));
-        training.setWeight(countingWeights(countingTM(trainingRequest.getOneRm())));
+        training.setTypeTraining(trainingCreateRequest.getTypeTraining());
+        training.setLocalDate(trainingCreateRequest.getLocalDate());
+        training.setOneRm(trainingCreateRequest.getOneRm());
+        training.setMainExercises(trainingCreateRequest.getMainExercises());
+        training.setTM(countingTM(trainingCreateRequest.getOneRm()));
+        training.setWeight(countingWeights(countingTM(trainingCreateRequest.getOneRm())));
 
         trainingRepository.save(training);
 
         return training;
     }
 
-    public Training updateTraining(Long id, TrainingRequest trainingRequest) {
+    public Training updateTraining(Long id, TrainingUpdateRequest trainingUpdateRequest) {
         Training training = trainingRepository.findById(id).orElse(null);
 
         if (training != null) {
-            training.setLocalDate(trainingRequest.getLocalDate());
-            training.setOneRm(trainingRequest.getOneRm());
-            training.setTM(countingTM(trainingRequest.getOneRm()));
-            training.setWeight(countingWeights(countingTM(trainingRequest.getOneRm())));
+            training.setLocalDate(trainingUpdateRequest.getLocalDate());
+            training.setOneRm(trainingUpdateRequest.getOneRm());
+            training.setTM(countingTM(trainingUpdateRequest.getOneRm()));
+            training.setWeight(countingWeights(countingTM(trainingUpdateRequest.getOneRm())));
             trainingRepository.save(training);
         }
         return training;
@@ -63,7 +64,6 @@ public class TrainingService {
 
         for (Integer p : percents) {
             double percent = (double) p / 100;
-            System.out.println(percent + " * " + tM);
             weights.add((double) Math.round((percent * tM) / ROUNDING) * ROUNDING);
         }
 

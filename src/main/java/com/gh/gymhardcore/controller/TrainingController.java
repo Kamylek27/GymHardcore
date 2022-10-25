@@ -1,6 +1,7 @@
 package com.gh.gymhardcore.controller;
 
-import com.gh.gymhardcore.dto.TrainingRequest;
+import com.gh.gymhardcore.dto.TrainingCreateRequest;
+import com.gh.gymhardcore.dto.TrainingUpdateRequest;
 import com.gh.gymhardcore.entity.Training;
 import com.gh.gymhardcore.service.TrainingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,13 @@ public class TrainingController {
 
 
     @PostMapping("/create")
-    public Training createTraining(@RequestBody TrainingRequest trainingRequest) {
-        return trainingService.createTraining(trainingRequest);
+    public Training createTraining(@RequestBody TrainingCreateRequest trainingCreateRequest) {
+        return trainingService.createTraining(trainingCreateRequest);
     }
 
     @PutMapping("/update/{id}")
-    public Training updateTraining(@PathVariable("id") Long id, @RequestBody TrainingRequest trainingRequest) {
-        return trainingService.updateTraining(id, trainingRequest);
+    public Training updateTraining(@PathVariable("id") Long id, @RequestBody TrainingUpdateRequest trainingUpdateRequest) {
+        return trainingService.updateTraining(id, trainingUpdateRequest);
     }
 
 

@@ -9,13 +9,9 @@ import java.time.LocalDate;
 
 @Getter
 @NoArgsConstructor
-public class TrainingRequest {
+public class TrainingUpdateRequest {
 
     private LocalDate localDate;
-
-    private TypeTraining typeTraining;
-
-    private MainExercises mainExercises;
 
     private double oneRm;
 }
