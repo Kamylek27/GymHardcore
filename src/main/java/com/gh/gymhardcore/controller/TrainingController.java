@@ -1,13 +1,10 @@
 package com.gh.gymhardcore.controller;
 
-import com.gh.gymhardcore.dto.TrainingDto;
+import com.gh.gymhardcore.dto.TrainingRequest;
 import com.gh.gymhardcore.entity.Training;
 import com.gh.gymhardcore.service.TrainingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/training")
@@ -22,8 +19,13 @@ public class TrainingController {
 
 
     @PostMapping("/create")
-    public Training createTraining(@RequestBody TrainingDto trainingDto) {
-        return trainingService.createTraining(trainingDto);
+    public Training createTraining(@RequestBody TrainingRequest trainingRequest) {
+        return trainingService.createTraining(trainingRequest);
+    }
+
+    @PutMapping("/update/{id}")
+    public Training updateTraining(@PathVariable("id") Long id, @RequestBody TrainingRequest trainingRequest) {
+        return trainingService.updateTraining(id, trainingRequest);
     }
 
 
