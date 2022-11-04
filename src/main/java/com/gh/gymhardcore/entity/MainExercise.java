@@ -3,8 +3,10 @@ package com.gh.gymhardcore.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gh.gymhardcore.enums.MainExercises;
 import com.gh.gymhardcore.enums.TypeTraining;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -13,7 +15,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-public class Training {
+public class MainExercise {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

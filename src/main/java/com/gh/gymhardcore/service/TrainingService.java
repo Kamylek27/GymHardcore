@@ -2,7 +2,8 @@ package com.gh.gymhardcore.service;
 
 import com.gh.gymhardcore.dto.TrainingCreateRequest;
 import com.gh.gymhardcore.dto.TrainingUpdateRequest;
-import com.gh.gymhardcore.entity.Training;
+import com.gh.gymhardcore.entity.MainExercise;
+import com.gh.gymhardcore.exception.TrainingNotFoundException;
 import com.gh.gymhardcore.repository.TrainingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,33 +26,32 @@ public class TrainingService {
     }
 
 
-    public Training createTraining(TrainingCreateRequest trainingCreateRequest) {
-        Training training = new Training();
+    public MainExercise createTraining(TrainingCreateRequest trainingCreateRequest) {
+        MainExercise mainExercise = new MainExercise();
         System.out.println(trainingCreateRequest.getOneRm());
 
-        training.setTypeTraining(trainingCreateRequest.getTypeTraining());
-        training.setLocalDate(trainingCreateRequest.getLocalDate());
-        training.setOneRm(trainingCreateRequest.getOneRm());
-        training.setMainExercises(trainingCreateRequest.getMainExercises());
-        training.setTM(countingTM(trainingCreateRequest.getOneRm()));
-        training.setWeight(countingWeights(countingTM(trainingCreateRequest.getOneRm())));
+        mainExercise.setTypeTraining(trainingCreateRequest.getTypeTraining());
+        mainExercise.setLocalDate(trainingCreateRequest.getLocalDate());
+        mainExercise.setOneRm(trainingCreateRequest.getOneRm());
+        mainExercise.setMainExercises(trainingCreateRequest.getMainExercises());
+        mainExercise.setTM(countingTM(trainingCreateRequest.getOneRm()));
+        mainExercise.setWeight(countingWeights(countingTM(trainingCreateRequest.getOneRm())));
 
-        trainingRepository.save(training);
+        trainingRepository.save(mainExercise);
 
-        return training;
+        return mainExercise;
     }
 
-    public Training updateTraining(Long id, TrainingUpdateRequest trainingUpdateRequest) {
-        Training training = trainingRepository.findById(id).orElse(null);
+    public MainExercise updateTraining(Long id, TrainingUpdateRequest trainingUpdateRequest) {
+        MainExercise mainExercise = trainingRepository.findById(id).orElseThrow(TrainingNotFoundException::new);
 
-        if (training != null) {
-            training.setLocalDate(trainingUpdateRequest.getLocalDate());
-            training.setOneRm(trainingUpdateRequest.getOneRm());
-            training.setTM(countingTM(trainingUpdateRequest.getOneRm()));
-            training.setWeight(countingWeights(countingTM(trainingUpdateRequest.getOneRm())));
-            trainingRepository.save(training);
-        }
-        return training;
+            mainExercise.setLocalDate(trainingUpdateRequest.getLocalDate());
+            mainExercise.setOneRm(trainingUpdateRequest.getOneRm());
+            mainExercise.setTM(countingTM(trainingUpdateRequest.getOneRm()));
+            mainExercise.setWeight(countingWeights(countingTM(trainingUpdateRequest.getOneRm())));
+            trainingRepository.save(mainExercise);
+
+        return mainExercise;
     }
 
     private double countingTM(double oneRm) {
