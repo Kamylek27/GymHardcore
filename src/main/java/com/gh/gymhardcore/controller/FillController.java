@@ -3,6 +3,7 @@ package com.gh.gymhardcore.controller;
 
 import com.gh.gymhardcore.configuration.LoadData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,14 @@ public class FillController {
     }
 
     @PostMapping("/switch")
-    public void switcher() {
-        loadData.changeSwitcher();
+    public ResponseEntity<?> switcher() {
+        return ResponseEntity.ok("Data added");
     }
+
+    @PostMapping("/delete")
+    public ResponseEntity<?> deleteFillData() {
+        loadData.deleteFillData();
+        return ResponseEntity.ok("Fill deleted");
+    }
+
 }
