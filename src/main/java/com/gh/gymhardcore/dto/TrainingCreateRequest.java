@@ -2,12 +2,14 @@ package com.gh.gymhardcore.dto;
 
 import com.gh.gymhardcore.enums.MainExercises;
 import com.gh.gymhardcore.enums.TypeTraining;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Getter
+@Data
+@AllArgsConstructor
 @NoArgsConstructor
 public class TrainingCreateRequest {
 
